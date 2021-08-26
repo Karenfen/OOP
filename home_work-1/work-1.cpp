@@ -123,6 +123,8 @@ int main (const int argc, const char** argv){
     stack.pop();
     stack.pop();
     stack.print();
+    stack.reset();
+    stack.print();
     }
     cout << endl;
     system("pause");
