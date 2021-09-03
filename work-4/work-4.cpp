@@ -5,6 +5,7 @@
 #include <cstring>
 #include <cassert>
 
+#define BJ 21
 using namespace std;
 
 /// Classes and Functions for TASK-1 ///
@@ -198,8 +199,9 @@ public:
                 Check++;
         }
         while (Check > 0) {
-            if (total + 10 > 21) { break; }  
-            else { total += 10; }
+            if (total + 10 <= BJ && Check == 1) {
+                total += 10;
+            }
             Check--;
         }
         return total;
