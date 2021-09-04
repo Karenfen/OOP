@@ -6,6 +6,7 @@
 #include <cassert>
 
 #define BJ 21
+#define __TEN__ 10
 using namespace std;
 
 /// Classes and Functions for TASK-1 ///
@@ -155,8 +156,10 @@ int checking_for_unique_numbers(vector<int> &p) {
 }
 
 /// Classes and Functions for TASK-3 ///
-enum SUIT {Trump, Clubs, Diamonds, Hearts, Spades};
-enum VALUE {Joker, Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack = 10, Queen = 10, King = 10};
+enum class SUIT {Trump, Clubs, Diamonds, Hearts, Spades};
+string suit_name[] = {"Trump", "Clubs", "Diamonds", "Hearts", "Spades"};
+enum VALUE {Joker, Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King};
+string value_name[] = {"Joker", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
 
 class Card {
 private:
@@ -166,7 +169,12 @@ private:
 public:
     Card(VALUE value, SUIT suit, bool card_is_open = 0) : m_value(value), m_suit(suit), m_card_is_open(card_is_open) { }
     void Flip() { m_card_is_open = !m_card_is_open; }
-    int GetValue() const { return m_value; }
+    int GetValue() const { 
+        if (m_card_is_open) 
+            return m_value; 
+        else 
+            return 0;
+    }
     ~Card() { }
 };
 
@@ -175,7 +183,7 @@ private:
     vector<Card*>m_Cards;
 public:
     Hand() { }
-    ~Hand() { }
+    ~Hand() { clear(); }
     void Add(Card* pCard) {
         m_Cards.push_back(pCard);
     }
@@ -194,13 +202,17 @@ public:
         int Check = 0;
         int total = 0;
         for (int index = 0; index < m_Cards.size(); index++) {
-            total += m_Cards[index]->GetValue();
+            if (m_Cards[index]->GetValue() > __TEN__) {
+                total += __TEN__;
+            } else {
+                total += m_Cards[index]->GetValue();
+            }
             if (m_Cards[index]->GetValue() == Ace)
                 Check++;
         }
         while (Check > 0) {
-            if (total + 10 <= BJ && Check == 1) {
-                total += 10;
+            if (total + __TEN__ <= BJ && Check == 1) {
+                total += __TEN__;
             }
             Check--;
         }

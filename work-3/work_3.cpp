@@ -157,7 +157,19 @@ public:
     friend bool operator> (Fraction &f1, Fraction &f2);
     friend bool operator<= (Fraction &f1, Fraction &f2);
     friend bool operator>= (Fraction &f1, Fraction &f2);
+    friend bool operator!= (Fraction &f1, Fraction &f2);
+    friend bool operator== (Fraction &f1, Fraction &f2);
     ~Fraction() { }
+};
+
+bool operator== (Fraction &f1, Fraction &f2) {
+    if (1.0 * f1.getNumerator() / f1.getDenominator() == 1.0 * f2.getNumerator() / f2.getDenominator())
+        return true;
+    else    
+        return false;
+};
+bool operator!= (Fraction &f1, Fraction &f2) {
+    return !(f1 == f2);
 };
 
 bool operator< (Fraction &f1, Fraction &f2) {
@@ -165,7 +177,6 @@ bool operator< (Fraction &f1, Fraction &f2) {
     double val_2 = 1.0 * f2.numerator / f2.denominator;
     return (val_1 < val_2);
 }
-
 bool operator> (Fraction &f1, Fraction &f2) {
     double val_1 = 1.0 * f1.numerator / f1.denominator;
     double val_2 = 1.0 * f2.numerator / f2.denominator;
@@ -175,7 +186,6 @@ bool operator> (Fraction &f1, Fraction &f2) {
 bool operator>= (Fraction &f1, Fraction &f2) {
     return (!(f1 < f2));
 }
-
 bool operator<= (Fraction &f1, Fraction &f2) {
     return (!(f1 > f2));
 }
@@ -186,7 +196,6 @@ Fraction operator+ (const Fraction &f1, const Fraction &f2) {
     denom = f1.getDenominator() * f2.getDenominator();
     return Fraction(numer, denom);
 }
-
 Fraction operator- (const Fraction &f1, const Fraction &f2) {
     int numer, denom;
     numer = f1.getNumerator() * f2.getDenominator() - f2.getNumerator() * f1.getDenominator();
@@ -320,6 +329,14 @@ int main(const int argc, const char** argv) {
         num_1.print();
         cout << endl;
 
+        num_2.print();
+        if(num_2 != num_1) {
+            cout << " != ";
+        } else {
+            cout << " == ";
+        }
+        num_1.print();
+        cout << endl;
 
     }
     devide();  /* TASK-4 */
