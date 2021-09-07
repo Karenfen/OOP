@@ -126,12 +126,9 @@ private:
 public:
     Generic_Player(string name) : m_name(name) { };
     ~Generic_Player() { }
-    virtual bool Is_Hitting() const { };
+    virtual bool Is_Hitting() const = 0;
     bool Is_Busted() const {
-        if (Get_Total() > BJ)
-            return true;
-        else    
-            return false;
+        return Get_Total() > BJ;
     }
     void Bust() const {
         cout << "The player  " << m_name << " is BUST!" << endl;
