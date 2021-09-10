@@ -148,7 +148,6 @@ public:
             m_Cards.front()->Flip();
         }  
     }
-    friend ostream& operator<< (const ostream &out, const Generic_Player &player);
 };
 
 /// Classes and Functions for TASK-5 ///
