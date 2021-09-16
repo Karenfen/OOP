@@ -6,7 +6,7 @@ using namespace std;
 
 /// Task - 1 ///
 template <typename T>
-T div(T num1, T num2) 
+T div(const T& num1, const T& num2) 
 {
     if ( num2 == 0 ) {
         throw 0;
