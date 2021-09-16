@@ -17,3 +17,12 @@ int Card::Get_Value() const {
 }
 
 Card::~Card() { }
+
+std::ostream& operator<< (std::ostream &out, const Card &card) {
+    if (card.m_card_is_open) {
+        out << value_name[card.m_value] << " " << suit_name[card.m_suit] << std::endl;
+    } else {
+        out << "XXX" << std::endl;
+    }
+    return out;
+}

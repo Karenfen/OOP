@@ -4,7 +4,6 @@
 #include "house.hpp"
 #include "player.hpp"
 #include "Class_game.hpp"
-#include "func.hpp"
 
 #include <vector>
 #include <string>

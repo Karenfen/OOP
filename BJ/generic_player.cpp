@@ -15,3 +15,15 @@ void Generic_Player::Bust() const {
 }
 
 Generic_Player::~Generic_Player(){ }
+
+std::ostream& operator<< (std::ostream &out, const Generic_Player &player) {
+    out << "Player: " << player.m_name << "\n";
+    std::vector<Card*>::const_iterator it;
+    it = player.m_Cards.begin();
+    while (it != player.m_Cards.end()) {
+        out << **it;
+        ++it;
+    }
+    out << "Total score: " << player.Get_Total() << std::endl;
+    return out;
+}

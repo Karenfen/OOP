@@ -19,7 +19,6 @@ using namespace std;
 #include "player.hpp"
 #include "house.hpp"
 #include "deck.hpp"
-#include "func.hpp"
 #include "Class_game.hpp"
 
 int main (const int argc, const char **argv) {
@@ -29,9 +28,13 @@ int main (const int argc, const char **argv) {
     int players;
     char answer;
 
-    cout << endl << "Enter the number of players: ";
-    cin >> players;
-    cout << endl;
+    do 
+    {
+        cout << endl << "Enter the number of players (1-7): ";
+        cin >> players;
+        cout << endl;
+
+    } while (players < 1 || players > 7);
 
     for (int i = 1; i <= players; ++i) {
         cout << "Enter player " << i << " name: ";

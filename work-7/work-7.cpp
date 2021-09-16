@@ -47,10 +47,10 @@ bool Date::operator> (Date date2){
         else {
             if (this->day > date2.day)
                 return true;
-            else 
+            else
                 return false;
         }
-    }  
+    }
 };
 
 bool Date::operator< (Date date2){
@@ -58,14 +58,14 @@ bool Date::operator< (Date date2){
 };
 
 /// Classes and Functions for TASK-2 ///
-Date Comparison_dates(const unique_ptr<Date> &date1, const unique_ptr<Date> &date2) {
+Date& Comparison_dates(const unique_ptr<Date> &date1, const unique_ptr<Date> &date2) {
     if (*date1 > *date2)
         return *date1;
     else if (*date1 < *date2)
         return *date2;
     else {
         cout << "Same dates!" << endl;
-        return *date1; 
+        return *date1;
     }
 }
 
@@ -76,7 +76,7 @@ void Swap_dates(unique_ptr<Date> &date1, unique_ptr<Date> &date2) {
 //// other function ////
 void devide() {
     static int task = 0;
-    cout << "\n|| Task - " << ++task << " ==============================================\n" << endl; 
+    cout << "\n|| Task - " << ++task << " ==============================================\n" << endl;
 }
 
 typedef unique_ptr<Date> DateUPtr;
@@ -90,18 +90,18 @@ int main (const int argc, const char **argv) {
     today->Set_day(11);
     today->Set_month(9);
     today->Set_year(2021);
-    
+
     *date = *today.release();
 
-    if ( date != nullptr) 
+    if ( date != nullptr)
         cout << "date: " << *date << endl;
-    else 
-        cout << "date is null\n"; 
+    else
+        cout << "date is null\n";
 
     if ( today != nullptr)
         cout << "date: " << *today << endl;
     else
-        cout << "today is null\n"; 
+        cout << "today is null\n";
 
 }
     devide(); //// TASK-2
